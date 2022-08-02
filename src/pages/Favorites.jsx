@@ -17,7 +17,12 @@ class Favorites extends Component {
         favoritesSongs: favorites,
         isLoading: false,
       });
-      console.log(favorites);
+    });
+  }
+
+  reloadFavoriteList = (array) => {
+    this.setState({
+      favoritesSongs: array,
     });
   }
 
@@ -38,9 +43,11 @@ class Favorites extends Component {
                 <MusicCard
                   trackName={ music.trackName }
                   previewUrl={ music.previewUrl }
-                  trackId={ music.trackId }
-                  collectionId={ music.collectionId } // +id || ~~id || id * 1
+                  trackId={ Number(music.trackId) }
+                  collectionId={ Number(music.collectionId) }
+                  objectMusic={ music }
                   isFavorite
+                  reloadFavoriteList={ this.reloadFavoriteList }
                 />
               </li>))}
           </ul>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
-import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
@@ -21,16 +21,20 @@ class MusicCard extends Component {
       .find((e) => e.trackId === trackId);
   }
 
-  handleCheck = (e, collectionId, trackId) => {
+  handleCheck = (e) => {
+    const { reloadFavoriteList, objectMusic } = this.props;
     this.setState({
       isLoading: true,
       isFavorite: e.target.checked,
     }, async () => {
-      const music = await this.getMusicObject(collectionId, trackId);
       if (e.target.checked === true) {
-        await addSong(music);
+        await addSong(objectMusic);
       } else {
-        await removeSong(music);
+        await removeSong(objectMusic);
+      }
+      if (reloadFavoriteList) {
+        const favorites = await getFavoriteSongs();
+        reloadFavoriteList(favorites);
       }
       this.setState({ isLoading: false });
     });
@@ -54,13 +58,17 @@ class MusicCard extends Component {
           {`O seu navegador não suporta o elemento ${trackName}`}
           <code>audio</code>
         </audio>
-        <input
-          type="checkbox"
-          data-testid={ `checkbox-music-${trackId}` }
-          name={ trackId }
-          checked={ isFavorite }
-          onChange={ (e) => this.handleCheck(e, collectionId, trackId) }
-        />
+        <label htmlFor={ trackName }>
+          Favorita
+          <input
+            id={ trackName }
+            type="checkbox"
+            data-testid={ `checkbox-music-${trackId}` }
+            name={ trackId }
+            checked={ isFavorite }
+            onChange={ (e) => this.handleCheck(e, collectionId, trackId) }
+          />
+        </label>
       </div>
     );
   }
@@ -72,6 +80,12 @@ MusicCard.propTypes = {
   trackId: PropTypes.number.isRequired,
   collectionId: PropTypes.number.isRequired,
   isFavorite: PropTypes.bool.isRequired,
+  objectMusic: PropTypes.objectOf({}).isRequired,
+  reloadFavoriteList: PropTypes.func,
+};
+
+MusicCard.defaultProps = {
+  reloadFavoriteList: false,
 };
 
 export default MusicCard;

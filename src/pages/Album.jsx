@@ -54,6 +54,7 @@ class Album extends Component {
                   trackName={ music.trackName }
                   previewUrl={ music.previewUrl }
                   trackId={ music.trackId }
+                  objectMusic={ music }
                   collectionId={ Number(id) } // +id || ~~id || id * 1
                   isFavorite={ this.checkIfIsFavorite(music.trackId) }
                 />
