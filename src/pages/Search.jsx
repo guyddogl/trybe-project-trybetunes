@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-import AlbumsCard from '../components/AlbumsCard';
+import AlbumCard from '../components/AlbumCard';
 
 class Search extends Component {
   state = {
@@ -76,7 +76,7 @@ class Search extends Component {
             Enter
           </button>
           {isLoading && <Loading />}
-          {searchResult && <AlbumsCard albums={ albums } artist={ artistName } />}
+          {searchResult && <AlbumCard albums={ albums } artist={ artistName } />}
         </div>
       </>
     );
