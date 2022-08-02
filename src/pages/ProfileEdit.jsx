@@ -64,7 +64,7 @@ class Profile extends Component {
     return (
       <>
         <Header />
-        <div data-testid="page-profile">
+        <div data-testid="page-profile-edit">
           Profile
           <br />
           {isLoading ? <Loading />
