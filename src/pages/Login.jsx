@@ -25,8 +25,8 @@ class Login extends Component {
   handleClick = () => {
     this.setState({ isLoading: true }, async () => {
       const { userName } = this.state;
-      const { history } = this.props;
       await createUser({ name: userName });
+      const { history } = this.props;
       history.push('/search');
     });
   }
