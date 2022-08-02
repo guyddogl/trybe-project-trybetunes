@@ -27,7 +27,6 @@ class MusicCard extends Component {
       isFavorite: e.target.checked,
     }, async () => {
       const music = await this.getMusicObject(collectionId, trackId);
-      console.log(music);
       if (e.target.checked === true) {
         await addSong(music);
       } else {
