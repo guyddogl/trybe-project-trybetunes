@@ -24,7 +24,6 @@ class Album extends Component {
       infoAlbum,
       dataAlbum,
     } = this.state;
-
     return (
       <>
         <Header />
@@ -38,6 +37,8 @@ class Album extends Component {
                 <MusicCard
                   trackName={ music.trackName }
                   previewUrl={ music.previewUrl }
+                  trackId={ music.trackId }
+                  collectionId={ music.collectionId }
                 />
               </li>))}
           </ul>
