@@ -11,6 +11,7 @@ class Album extends Component {
     dataAlbum: [],
     infoAlbum: {},
     favoritesSongs: [],
+    isLoading: false,
   }
 
   componentDidMount() {
@@ -19,7 +20,6 @@ class Album extends Component {
       this.setState({ favoritesSongs: favorites });
       const { match: { params: { id } } } = this.props;
       const dataAlbum = await getMusics(id);
-      console.log(dataAlbum);
       this.setState({
         dataAlbum,
         infoAlbum: dataAlbum[0],
