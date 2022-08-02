@@ -3,32 +3,48 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import Loading from '../components/Loading';
 
 class Album extends Component {
   state = {
     dataAlbum: [],
     infoAlbum: {},
+    favoritesSongs: [],
   }
 
-  async componentDidMount() {
-    const { match: { params: { id } } } = this.props;
-    const dataAlbum = await getMusics(id);
-    this.setState({
-      dataAlbum,
-      infoAlbum: dataAlbum[0],
+  componentDidMount() {
+    this.setState({ isLoading: true }, async () => {
+      const favorites = await getFavoriteSongs();
+      this.setState({ favoritesSongs: favorites });
+      const { match: { params: { id } } } = this.props;
+      const dataAlbum = await getMusics(id);
+      console.log(dataAlbum);
+      this.setState({
+        dataAlbum,
+        infoAlbum: dataAlbum[0],
+        isLoading: false,
+      });
     });
+  }
+
+  checkIfIsFavorite = (id) => {
+    const { favoritesSongs } = this.state;
+    return favoritesSongs.some((music) => music.trackId === id);
   }
 
   render() {
     const {
       infoAlbum,
       dataAlbum,
+      isLoading,
     } = this.state;
+    const { match: { params: { id } } } = this.props;
     return (
       <>
         <Header />
         <div data-testid="page-album">
-          Album
+          {isLoading && <Loading />}
           <p data-testid="artist-name">{ infoAlbum.artistName }</p>
           <p data-testid="album-name">{ infoAlbum.collectionName }</p>
           <ul>
@@ -38,7 +54,8 @@ class Album extends Component {
                   trackName={ music.trackName }
                   previewUrl={ music.previewUrl }
                   trackId={ music.trackId }
-                  collectionId={ music.collectionId }
+                  collectionId={ Number(id) } // +id || ~~id || id * 1
+                  isFavorite={ this.checkIfIsFavorite(music.trackId) }
                 />
               </li>))}
           </ul>

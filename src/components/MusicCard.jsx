@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
   state = {
     isLoading: false,
+    isFavorite: false,
   };
+
+  componentDidMount() {
+    const { isFavorite } = this.props;
+    this.setState({ isFavorite });
+  }
 
   getMusicObject = async (collectionId, trackId) => {
     const albumData = await getMusics(collectionId);
     return albumData.filter((e, index) => index !== 0 && e)
-      .filter((e) => e.trackId === trackId);
+      .find((e) => e.trackId === trackId);
   }
 
-  handleCheck = async (collectionId, trackId) => {
-    this.setState({ isLoading: true });
-    const music = await this.getMusicObject(collectionId, trackId);
-    await addSong(music);
-    this.setState({ isLoading: false });
-    // console.log(music);
+  handleCheck = (e, collectionId, trackId) => {
+    this.setState({
+      isLoading: true,
+      isFavorite: e.target.checked,
+    }, async () => {
+      const music = await this.getMusicObject(collectionId, trackId);
+      console.log(music);
+      if (e.target.checked === true) {
+        await addSong(music);
+      } else {
+        await removeSong(music);
+      }
+      this.setState({ isLoading: false });
+    });
   }
 
   render() {
@@ -30,7 +44,7 @@ class MusicCard extends Component {
       trackId,
       collectionId,
     } = this.props;
-    const { isLoading } = this.state;
+    const { isLoading, isFavorite } = this.state;
     return (
       <div>
         {isLoading && <Loading />}
@@ -45,7 +59,8 @@ class MusicCard extends Component {
           type="checkbox"
           data-testid={ `checkbox-music-${trackId}` }
           name={ trackId }
-          onChange={ () => this.handleCheck(collectionId, trackId) }
+          checked={ isFavorite }
+          onChange={ (e) => this.handleCheck(e, collectionId, trackId) }
         />
       </div>
     );
@@ -57,6 +72,7 @@ MusicCard.propTypes = {
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
   collectionId: PropTypes.number.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
 };
 
 export default MusicCard;
