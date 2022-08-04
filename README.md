@@ -20,4 +20,4 @@ Funcionalidades principais:
 
 https://user-images.githubusercontent.com/47524908/182866890-6b04132c-54cf-4423-9268-846e8be47de2.mp4
 
-<img src="https://github.com/guyddogl/trybe-project-tryunfo/blob/main/public/tryunfo-preview.jpg" alt="Imagem Preview" />
+<img src="https://github.com/guyddogl/trybe-project-trybetunes/blob/main/src/assets/images/trybetunes.jpg" alt="Imagem Preview" />
