@@ -1,6 +1,6 @@
 ## Project TrybeTunes
 
-Links: <a href="https://guyddogl.github.io/trybe-project-tryunfo/">Preview</a>
+Links: <a href="https://guyddogl.github.io/trybe-project-trybetunes/">Preview</a>
 <hr/>
 
 Projeto desenvolvido em React seguindo os conceitos de Single Page Application (SPA).
