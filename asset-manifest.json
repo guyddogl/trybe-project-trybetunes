@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/trybe-project-trybetunes/static/css/main.728fff24.css",
-    "main.js": "/trybe-project-trybetunes/static/js/main.7d4bdc12.js",
+    "main.css": "/trybe-project-trybetunes/static/css/main.4591b9f4.css",
+    "main.js": "/trybe-project-trybetunes/static/js/main.b2424e71.js",
+    "static/media/soundson.gif": "/trybe-project-trybetunes/static/media/soundson.061358aa33a565711905.gif",
+    "static/media/logo.png": "/trybe-project-trybetunes/static/media/logo.71beeb02d02b0148d095.png",
+    "static/media/user.png": "/trybe-project-trybetunes/static/media/user.a1158b938d4f9c73d102.png",
     "index.html": "/trybe-project-trybetunes/index.html",
-    "main.728fff24.css.map": "/trybe-project-trybetunes/static/css/main.728fff24.css.map",
-    "main.7d4bdc12.js.map": "/trybe-project-trybetunes/static/js/main.7d4bdc12.js.map"
+    "main.4591b9f4.css.map": "/trybe-project-trybetunes/static/css/main.4591b9f4.css.map",
+    "main.b2424e71.js.map": "/trybe-project-trybetunes/static/js/main.b2424e71.js.map"
   },
   "entrypoints": [
-    "static/css/main.728fff24.css",
-    "static/js/main.7d4bdc12.js"
+    "static/css/main.4591b9f4.css",
+    "static/js/main.b2424e71.js"
   ]
 }
