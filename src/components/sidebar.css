@@ -1,0 +1,80 @@
+.sidebar {
+  width: 280px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  background-color: #2fc18c;
+}
+
+.user-profile-bg {
+  color: #6B767D;
+}
+
+.user-profile-bg:hover {
+  background: #6c757d;
+  cursor: pointer;
+  color: white;
+}
+
+hr {
+  color: #2fc18c;
+  border-top: 2px solid #2fc18c;
+}
+
+.logo {
+  max-height: 50px;
+}
+
+.title {
+  color: #2fc18c;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: white;
+  font-weight: 600;
+}
+
+.user-img {
+  opacity: 0.8;
+  width: 32px;
+  height: 32px;
+}
+
+.carregando {
+  text-align: center;
+  color: white
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 80px;
+  }
+
+  .nav-link {
+    width: 50px;
+  }
+
+  .logo {
+    margin-left: -2px;
+  }
+
+  .title {
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: -3px;
+  }
+
+  .subtitle {
+    font-size: 10px;
+    font-weight: 600;
+  }
+}

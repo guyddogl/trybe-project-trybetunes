@@ -1,48 +1,37 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Loading from './Loading';
-import { getUser } from '../services/userAPI';
+import NavLinks from './NavLinks';
+import './sidebar.css';
+import logo from '../assets/images/logo.png';
 
 class Header extends Component {
-  state = {
-    isLoading: false,
-    userName: '',
-  };
-
-  componentDidMount() {
-    this.setState({ isLoading: true }, async () => {
-      const dataUser = await getUser();
-      this.setState({
-        userName: dataUser.name,
-        isLoading: false,
-      });
-    });
-  }
-
   render() {
-    const { isLoading, userName } = this.state;
     return (
-      <div>
-        {isLoading ? <Loading />
-          : (
-            <header
-              data-testid="header-component"
-            >
-              <ul>
-                <li>
-                  <Link to="/search" data-testid="link-to-search">Search</Link>
-                </li>
-                <li>
-                  <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
-                </li>
-                <li>
-                  <Link to="/profile" data-testid="link-to-profile">Profile</Link>
-                </li>
-              </ul>
-              <span data-testid="header-user-name">{userName}</span>
-            </header>
-          )}
-      </div>
+      <>
+        <header
+          className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
+          data-testid="header-component"
+        >
+          <Link
+            to="/home"
+            className="d-flex align-items-center mb-3 mb-md-0 text-decoration-none"
+          >
+            <img src={ logo } className="logo me-3" alt="Logo" />
+            <span className="fs-4 title d-none d-md-block">Trybe</span>
+            <span className="fs-4 subtitle d-none d-md-block">Tunes</span>
+          </Link>
+          <span
+            className="title d-md-none"
+          >
+            Trybe
+            <span className="subtitle d-md-none">Tunes</span>
+          </span>
+          <hr />
+          <NavLinks />
+        </header>
+        <div className="fixed-sidebar" />
+        <div className="b-divider b-vr" />
+      </>
     );
   }
 }

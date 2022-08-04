@@ -1,0 +1,90 @@
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  background: white;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+main {
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+}
+
+.title {
+  color: #2fc18c;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: white;
+  font-weight: 600;
+}
+
+.dashboard {
+  height: 100%;
+}
+
+.b-vr {
+  flex-shrink: 0;
+  width: 0.8rem;
+  height: 100vh;
+}
+
+.theme-color {
+  color: #2fc18c;
+}
+
+.theme-button {
+  background-color: #2fc18c;
+}
+
+.unplugged {
+  max-width: 450px;
+}
+
+.soundson {
+  max-height: 150px;
+}
+
+.img-list {
+  border: 2px solid #2fc18c;
+  border-radius: 50%;
+  max-width: 70px;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #2fc18c #2fc18c50;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ccc;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #2fc18c;
+}
+
+.fixed-sidebar {
+  width: 332px;
+}
+
+@media (max-width: 576px) {
+  .b-vr {
+    width: 0.2rem;
+  }
+
+  .fixed-sidebar {
+    width: 98px;
+  }
+}

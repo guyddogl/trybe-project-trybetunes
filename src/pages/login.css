@@ -1,0 +1,38 @@
+.login-container {
+  background: #212529;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.logo {
+  max-width: 80px;
+}
+
+.username {
+  border: 3px solid #2fc18c;
+  background: #2fc18c;
+  color: white;
+}
+
+.input {
+  border: 3px solid #ccc;
+}
+
+.input:focus {
+  border: 3px solid #2fc18c;
+  transition: all 1s;
+}
+
+.input-search {
+  border: 3px solid #ccc;
+  max-width: 300px;
+}
+
+.input-search:focus {
+  border: 3px solid #2fc18c;
+  transition: all 1s;
+}
+
+.submit {
+  background-color: #2fc18c;
+  width: 50%;
+}

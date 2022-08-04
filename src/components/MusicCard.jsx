@@ -49,26 +49,33 @@ class MusicCard extends Component {
     } = this.props;
     const { isLoading, isFavorite } = this.state;
     return (
-      <div>
-        {isLoading && <Loading />}
-        <span>{ trackName }</span>
-        <span>{ trackId }</span>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          {`O seu navegador não suporta o elemento ${trackName}`}
-          <code>audio</code>
-        </audio>
-        <label htmlFor={ trackName }>
-          Favorita
-          <input
-            id={ trackName }
-            type="checkbox"
-            data-testid={ `checkbox-music-${trackId}` }
-            name={ trackId }
-            checked={ isFavorite }
-            onChange={ (e) => this.handleCheck(e, collectionId, trackId) }
-          />
-        </label>
+      <div
+        className="row justify-content-center align-items-center my-3"
+        style={ { minHeight: '110px' } }
+      >
+        {isLoading ? <Loading />
+          : (
+            <>
+              <label htmlFor={ trackName } className="mb-2">
+                {/* Favorita */}
+                <input
+                  id={ trackName }
+                  className="form-check-input"
+                  type="checkbox"
+                  data-testid={ `checkbox-music-${trackId}` }
+                  name={ trackId }
+                  checked={ isFavorite }
+                  onChange={ (e) => this.handleCheck(e, collectionId, trackId) }
+                />
+                <span className="ms-2">{ trackName }</span>
+              </label>
+              <audio data-testid="audio-component" src={ previewUrl } controls>
+                <track kind="captions" />
+                {`O seu navegador não suporta o elemento ${trackName}`}
+                <code>audio</code>
+              </audio>
+            </>
+          )}
       </div>
     );
   }

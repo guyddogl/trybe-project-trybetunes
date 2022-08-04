@@ -1,33 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes, { object } from 'prop-types';
-import { Link } from 'react-router-dom';
+import AlbumLink from './AlbumLink';
 
 class AlbumCard extends Component {
   render() {
     const { albums, artist } = this.props;
     if (albums.length > 0) {
       return (
-        <div>
+        <div className="row justify-content-center align-items-center">
           <p>
             {`Resultado de álbuns de: ${artist}`}
           </p>
           {albums.map((album, index) => (
-            <div key={ index }>
-              <p>{ album.collectionName }</p>
-              <img src={ album.artworkUrl100 } alt={ album.artistId } />
-              <p>{ album.artistId }</p>
-              <p>{ album.releaseDate }</p>
-              <Link
-                to={ `/album/${album.collectionId}` }
-                data-testid={ `link-to-album-${album.collectionId}` }
-              >
-                <button
-                  type="button"
-                  className="btn btn-md btn-primary"
-                >
-                  Músicas
-                </button>
-              </Link>
+            <div key={ index } className="col my-3">
+              <div className="card shadow" style={ { width: '18rem' } }>
+                <img
+                  src={ album.artworkUrl100.replace(/100x100bb/g, '1000x1000bb') }
+                  alt={ album.artistId }
+                  className="card-img-top"
+                  style={ { height: '13rem' } }
+                />
+                <AlbumLink
+                  collectionName={ album.collectionName }
+                  to={ `/album/${album.collectionId}` }
+                  testid={ `link-to-album-${album.collectionId}` }
+                />
+              </div>
             </div>
           ))}
         </div>
