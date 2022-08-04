@@ -1,4 +1,4 @@
-## Project Tryunfo
+## Project TrybeTunes
 
 Links: <a href="https://guyddogl.github.io/trybe-project-tryunfo/">Preview</a>
 <hr/>
