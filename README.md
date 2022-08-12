@@ -3,12 +3,20 @@
 Links: <a href="https://guyddogl.github.io/trybe-project-trybetunes/">Preview</a>
 <hr/>
 
-Projeto desenvolvido em React seguindo os conceitos de Single Page Application (SPA).
+Projeto em React que simula um ecommerce utilizando a API do Mercado Livre.
 
 Funcionalidades principais:
-- Pesquisar por álbuns
-- Adicionar/Remover músicas favoritas
-- Criar usuário e editar suas informações
+- Pesquisar produtos
+- Exibir produtos por categoria
+- Adicionar, remover e alterar a quantidade de cada produto no carrinho
+- Avaliar um produto
+
+Projeto realizado em grupo. Participantes:
+Jonas Damasceno
+Lucas Irineu
+Lucas Israel
+Luis Felipe Apolonio Rowe
+Miguel Vieira
 
 ### Tecnologias principais
 ![HTML](https://img.shields.io/badge/-HTML-1b374b?style=for-the-badge&logo=HTML5)&nbsp;
